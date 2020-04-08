@@ -1,0 +1,16 @@
+int led=D7;
+void setup(){
+    pinMode(led,OUTPUT);
+    Particle.subscribe("hook-response/temp",myHandler,MY_DEVICES);
+}
+void myHandler(const char *event, const char *data){
+    
+}
+void loop(){
+    digitalWrite(led,HIGH);
+    String temp123=String(random(10,60));
+    Particle.publish("temp",temp123,PRIVATE);
+    delay(5000);
+    digitalWrite(led,LOW);
+    delay(5000);
+}
